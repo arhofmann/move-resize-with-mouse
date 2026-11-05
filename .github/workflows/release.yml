@@ -1,6 +1,6 @@
 name: Release
 
-# Push a tag such as v1.0.0 to build EasyMoveResize.exe and publish it as a GitHub release.
+# Push a tag such as v1.0.0 to build MoveResizeWithMouse.exe and publish it as a GitHub release.
 on:
   push:
     tags: ['v*']
@@ -27,6 +27,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          sha256sum EasyMoveResize.exe > EasyMoveResize.exe.sha256
-          gh release create "$GITHUB_REF_NAME" EasyMoveResize.exe EasyMoveResize.exe.sha256 \
-            --title "EasyMove+Resize $GITHUB_REF_NAME" --generate-notes
+          sha256sum MoveResizeWithMouse.exe > MoveResizeWithMouse.exe.sha256
+          gh release create "$GITHUB_REF_NAME" MoveResizeWithMouse.exe MoveResizeWithMouse.exe.sha256 \
+            --title "Move Resize with Mouse $GITHUB_REF_NAME" --generate-notes

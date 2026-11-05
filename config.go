@@ -59,7 +59,7 @@ func configPath() string {
 	if err != nil {
 		dir = filepath.Dir(os.Args[0])
 	}
-	return filepath.Join(dir, "EasyMoveResize", "config.json")
+	return filepath.Join(dir, "MoveResizeWithMouse", "config.json")
 }
 
 // loadConfig reads the config file, falling back to defaults, and hands the
@@ -154,7 +154,7 @@ func (c *config) setExcluded(app string, excluded bool) {
 
 const (
 	runKey   = `Software\Microsoft\Windows\CurrentVersion\Run`
-	runValue = "EasyMoveResize"
+	runValue = "MoveResizeWithMouse"
 )
 
 func autostartEnabled() bool {

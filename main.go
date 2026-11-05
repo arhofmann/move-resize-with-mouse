@@ -1,4 +1,4 @@
-// EasyMove+Resize for Windows: hold a modifier key (Alt by default) and drag
+// Move Resize with Mouse: hold a modifier key (Alt by default) and drag
 // anywhere inside a window to move it with the left mouse button or resize it
 // with the right one. Lives in the notification area; right-click the icon for
 // settings, left-click it to toggle.
@@ -12,7 +12,7 @@ import (
 	"unsafe"
 )
 
-const appName = "EasyMove+Resize"
+const appName = "Move Resize with Mouse"
 
 // version is stamped in by release builds (build.ps1 -Version).
 var version = "dev"
@@ -50,7 +50,7 @@ func main() {
 }
 
 func acquireSingleInstance() bool {
-	h, _, err := procCreateMutexW.Call(0, 0, uintptr(unsafe.Pointer(utf16Ptr(`Local\EasyMoveResize`))))
+	h, _, err := procCreateMutexW.Call(0, 0, uintptr(unsafe.Pointer(utf16Ptr(`Local\MoveResizeWithMouse`))))
 	if h == 0 {
 		return true
 	}

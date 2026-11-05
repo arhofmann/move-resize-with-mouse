@@ -34,7 +34,7 @@ var (
 // createMainWindow creates the hidden window that owns the tray icon.
 func createMainWindow() error {
 	hInst := moduleHandle()
-	class := utf16Ptr("EasyMoveResizeWindow")
+	class := utf16Ptr("MoveResizeWithMouseWindow")
 	wc := wndClassExW{LpfnWndProc: wndProcCallback, HInstance: hInst, LpszClassName: class}
 	wc.CbSize = uint32(unsafe.Sizeof(wc))
 	if r, _, err := procRegisterClassExW.Call(uintptr(unsafe.Pointer(&wc))); r == 0 {

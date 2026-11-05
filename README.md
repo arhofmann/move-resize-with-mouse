@@ -1,7 +1,7 @@
-# EasyMove+Resize for Windows
+# Move Resize with Mouse
 
-Move and resize any window by holding **Alt** and dragging anywhere inside it, with
-no need to aim for the title bar or a border. A Windows take on
+Move and resize any window on Windows by holding **Alt** and dragging anywhere inside it,
+with no need to aim for the title bar or a border. Inspired by
 [Easy Move+Resize](https://github.com/dmarcotte/easy-move-resize) for macOS.
 
 | Action | Effect |
@@ -13,7 +13,7 @@ The modifier key (or combination) and the resize button can be changed from the 
 
 ## Install
 
-Download `EasyMoveResize.exe` from the [latest release](../../releases/latest) and run it.
+Download `MoveResizeWithMouse.exe` from the [latest release](../../releases/latest) and run it.
 There is no installer and nothing else to install: the app is a single ~3 MB executable
 that lives in the notification area of the taskbar. To have it start automatically,
 right-click the tray icon and choose *Start with Windows*.
@@ -60,7 +60,7 @@ controls in Blender, …). Exclude them, or switch to a different modifier.
 
 ## Configuration
 
-Settings are stored in `%APPDATA%\EasyMoveResize\config.json` and written whenever you
+Settings are stored in `%APPDATA%\MoveResizeWithMouse\config.json` and written whenever you
 change something in the tray menu. To edit the file by hand, quit the app first:
 
 ```json
@@ -79,7 +79,7 @@ change something in the tray menu. To edit the file by hand, quit the app first:
 ## Limitations
 
 - Windows only lets a program move windows of programs running as administrator if it is
-  itself running as administrator. Start EasyMove+Resize elevated if you need that.
+  itself running as administrator. Start Move Resize with Mouse as administrator if you need that.
 - Releasing Alt or Win normally opens the window menu or the Start menu. To prevent that,
   the app sends an unassigned key (VK 0xE8) when a drag starts, the same trick AutoHotkey uses.
 
@@ -95,7 +95,7 @@ standard library: Win32 is called directly through `syscall`.
 or
 
 ```powershell
-go build -trimpath -ldflags "-H windowsgui -s -w" -o EasyMoveResize.exe .
+go build -trimpath -ldflags "-H windowsgui -s -w" -o MoveResizeWithMouse.exe .
 ```
 
 `-H windowsgui` keeps a console window from opening. The code uses no cgo, so it can also be
