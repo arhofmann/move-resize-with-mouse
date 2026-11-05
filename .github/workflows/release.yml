@@ -1,0 +1,32 @@
+name: Release
+
+# Push a tag such as v1.0.0 to build EasyMoveResize.exe and publish it as a GitHub release.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version: stable
+
+      - name: Build
+        shell: pwsh
+        run: ./build.ps1 -Version ($env:GITHUB_REF_NAME -replace '^v')
+
+      - name: Publish release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sha256sum EasyMoveResize.exe > EasyMoveResize.exe.sha256
+          gh release create "$GITHUB_REF_NAME" EasyMoveResize.exe EasyMoveResize.exe.sha256 \
+            --title "EasyMove+Resize $GITHUB_REF_NAME" --generate-notes

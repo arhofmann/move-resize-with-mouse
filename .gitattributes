@@ -1,0 +1,2 @@
+# LF everywhere, also in Windows checkouts, so gofmt sees what it writes.
+* text=auto eol=lf
